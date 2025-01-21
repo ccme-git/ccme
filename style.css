@@ -1,23 +1,36 @@
 /* Global Styles */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --background-color: #F5f5f5;
+    --text-color: #212529;
+    --header-bg-color: #333333;
+    --hover-color: #639CD9;
+    --padding-small: 10px;
+    --padding-medium: 20px;
+    --padding-large: 30px;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #F5f5f5;
-    color: #212529;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: var(--padding-medium);
 }
 
 /* Header Styles */
 header {
-    background-color: #333333;
+    background-color: var(--header-bg-color);
     color: #000000d8;
-    padding: 30px 0;
+    padding: var(--padding-large) 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -49,7 +62,7 @@ header nav ul li {
 
 header nav ul li a {
     display: block;
-    padding: 10px 15px;
+    padding: var(--padding-small) var(--padding-medium);
     text-decoration: none;
     color: #aa9292;
     font-size: 16px;
@@ -57,20 +70,21 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-color);
     color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Dropdown Menu */
 header nav ul .dropdown {
     display: none;
     position: absolute;
-    background-color: #333333;
+    background-color: var(--header-bg-color);
     top: 100%;
     left: 0;
     width: 200px;
     list-style: none;
-    padding: 10px 0;
+    padding: var(--padding-small) 0;
     z-index: 100;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -81,78 +95,136 @@ header nav ul li:hover .dropdown {
 
 header nav ul .dropdown li a {
     display: block;
-    padding: 10px 15px;
+    padding: var(--padding-small) var(--padding-medium);
     color: #FFFFFF;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 header nav ul .dropdown li a:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-color);
 }
 
 /* Main Content */
 h2 {
     font-size: 28px;
     color: #6c757d;
-    margin-bottom: 20px;
+    margin-bottom: var(--padding-medium);
 }
 
 p {
     line-height: 1.6;
-    margin-bottom: 20px;
-    color: #212529;
+    margin-bottom: var(--padding-medium);
+    color: var(--text-color);
 }
 
 /* Service Page Boxes */
-.services .service-box {
+.services1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--padding-medium);
+}
+
+.services1 .service-box1 {
     background-color: #FFFFFF;
     border: 5px solid #E0E0E0;
     border-radius: 20px;
-    padding: 10px;
-    margin-bottom: 30px;
+    padding: var(--padding-small);
+    margin-bottom: var(--padding-large);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.services .service-box:hover {
+.services1 .service-box1:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.services .service-box img {
+.services1 .service-box1 img {
     max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: var(--padding-medium);
+}
+
+.services1 .service-box1 h3 {
+    color: var(--hover-color);
+    margin-bottom: var(--padding-small);
+    font-size: 22px;
+}
+
+.services1 .service-box1 p {
+    color: #6c757d;
+}
+/* Container for the Services */
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.service-box {
+    flex: 1 1 calc(50% - 20px); /* Each box takes up 50% of the container minus gap */
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-box img {
+    width: 100%;
     height: auto;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
-.services .service-box h3 {
+.service-box h3 {
     color: #639CD9;
     margin-bottom: 15px;
     font-size: 22px;
 }
 
-.services .service-box p {
+.service-box p {
     color: #6c757d;
 }
 
+/* For Mobile View */
+@media (max-width: 768px) {
+    .service-box {
+        flex: 1 1 100%; /* Each box takes full width */
+    }
+}
+
+
 /* Footer */
 footer {
-    background-color: #333333;
+    background-color: var(--header-bg-color);
     color: #ffffff;
-    padding: 15px 0;
+    padding: var(--padding-small) 0;
     bottom: 0;
-    position:relative ;
+    position: relative;
     width: 100%;
     z-index: 1000;
     gap: 10px;
+    flex-wrap: wrap;
+}
+
+footer .section {
+    flex: 1 1 100%;
+    text-align: center;
 }
 
 footer p {
     margin: 0;
     color: rgb(255, 255, 255);
-
 }
 
 footer a {
@@ -160,30 +232,13 @@ footer a {
     text-decoration: none;
     transition: color 0.3s;
 }
+
 /* Button Hover Effects */
-   /* Footer styling */
-   footer {
-    color: rgb(255, 235, 235);          /* Text color */
-    padding: 20px;         /* Padding for space inside the footer */
-    display: flex;         /* Use flexbox for layout */
-    justify-content: space-between; /* Space between sections */
-  }
-
-  /* Section styling */
-  footer .section {
-    flex: 1;              /* Each section takes equal space */
-    padding: 10px;        /* Space inside each section */
-  }
-
-  /* Add space at the start and end of the footer */
-  footer {
-    margin: 0 10px;       /* Space outside the footer */
-  }
 button, .btn {
-    padding: 10px 20px;
+    padding: var(--padding-small) var(--padding-medium);
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: #FFFFFF;
     font-size: 16px;
     cursor: pointer;
@@ -191,14 +246,19 @@ button, .btn {
 }
 
 button:hover, .btn:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
+}
+
+button:focus, .btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     header nav ul {
         flex-direction: column;
-        background-color: #639CD9;
+        background-color: var(--hover-color);
     }
 
     header nav ul li {
@@ -206,87 +266,106 @@ button:hover, .btn:hover {
     }
 
     .services .service-box {
-        margin-bottom: 20px;
+        margin-bottom: var(--padding-medium);
     }
 
     .services .service-box img {
         width: 100%;
     }
 }
-#contact{
-    background: linear-gradient(to left,#007bff,#6a116a,#0056b3) ,url("/back.jpeg");
+
+/* Contact Section */
+#contact {
+    background: linear-gradient(to left, var(--primary-color), #6a116a) no-repeat center/cover, url("/back.jpeg");
     background-size: cover;
-    background-repeat: no-repeat;
     background-attachment: fixed;
     padding: 70px;
-    
-  }
-  .contact-card{
-  background-color: #ffffff6f;
-  padding: 20px;
-  box-shadow: 0.5px 0.5px 10px grey;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  border-radius: 30px;
-  }
-  .contact-form .get-in-touch{
-  width: 50px;
-  }
-  form{
+}
+
+.contact-card {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: var(--padding-medium);
+    box-shadow: 0.5px 0.5px 10px grey;
+    display: flex;
+    justify-content: center;
+    gap: var(--padding-small);
+    border-radius: 30px;
+}
+
+.contact-form .get-in-touch {
+    width: 50px;
+}
+
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px;
-  }
-  input ,textarea{
+    padding: var(--padding-small);
+}
+
+input, textarea {
     height: 50px;
     width: 100%;
-    margin-block: 10px;
+    margin-block: var(--padding-small);
     border-radius: 3px;
-    background-color: #ffffff34;
-  }
-  button{
-    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+button {
+    margin-top: var(--padding-large);
     width: 100%;
     height: 50px;
     color: white;
     background-color: rgb(98, 0, 255);
     border-radius: 5px;
     cursor: pointer;
-  }
-  button:hover{
+}
+
+button:hover {
     background-color: rgb(145, 30, 190);
-  }.get-in-touch{
-    padding: 20px;
+}
+
+.get-in-touch {
+    padding: var(--padding-medium);
     display: flex;
     flex-direction: column;
     font-size: 1.5em;
     line-height: 34px;
-  }
-  .contact-card h2{
+}
+
+.contact-card h2 {
     font-size: 1.5em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-  .get-in-touch ul{
+}
+
+.get-in-touch ul {
     display: flex;
     flex-direction: column;
     list-style: none;
     padding: 0;
     gap: 6px;
-  }
-  .social-links{
+}
+
+.social-links {
     display: flex;
     gap: 30px;
     margin-top: 40px;
-  }
-  .bibliotheque-section {
-    padding: 20px;
+}
+
+/* Bibliotheque Section */
+.bibliotheque-section {
+    padding: var(--padding-medium);
     background-color: #f9f9f9;
 }
 
 .bibliotheque-section .resources {
-    margin-top: 20px;
+    margin-top: var(--padding-medium);
 }
 
 .bibliotheque-section .resources ul {
@@ -295,16 +374,16 @@ button:hover, .btn:hover {
 }
 
 .bibliotheque-section .resources ul li {
-    margin-bottom: 10px;
+    margin-bottom: var(--padding-small);
 }
 
 .bibliotheque-section .resources ul li a {
     text-decoration: none;
-    color: #007BFF;
+    color: var(--primary-color);
     font-weight: bold;
 }
 
 .bibliotheque-section .resources ul li a:hover {
     text-decoration: underline;
-    color: #0056b3;
+    color: var(--secondary-color);
 }
